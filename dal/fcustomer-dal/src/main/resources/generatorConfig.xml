@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry location="D:\jar\mysql-connector-java-5.1.6.jar"/>
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.5.122:3306/facenter"
+                        userId="toowell" password="toowell2013db">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.qccr.fcustomer.dal.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.qccr.fcustomer.dal.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+         <table tableName="fc_customer" domainObjectName="FinanceCustomerNew" enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="JDBC"/></table>
+        <!--<table tableName="fc_customer_account" domainObjectName="CustomerAccount" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="JDBC"/></table>-->
+        <table tableName="fc_enterprise" domainObjectName="EnterpriseInfoNew" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="JDBC"/></table>
+        <!--<table tableName="fc_individual" domainObjectName="IndividualInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="JDBC"/></table>-->
+        <!--<table tableName="fc_merchant" domainObjectName="FinanceMerchant" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="JDBC"/></table>-->
+
+        <table tableName="fc_enterprise_contacts" domainObjectName="EnterpriseContacts" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="JDBC"/></table>
+        <table tableName="fc_bank_card" domainObjectName="BankCard" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="JDBC"/></table>
+    </context>
+</generatorConfiguration>

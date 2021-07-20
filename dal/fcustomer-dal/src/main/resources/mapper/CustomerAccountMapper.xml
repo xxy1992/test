@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qccr.fcustomer.dal.mapper.CustomerAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.qccr.fcustomer.dal.model.CustomerAccount" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="customer_id" property="customerId" jdbcType="BIGINT" />
+    <result column="account_no" property="accountNo" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_person" property="updatePerson" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="EnterpriseCustomerAccounteResultMap" type="com.qccr.fcustomer.dal.model.EnterpriseCustomerAccount" >
+    <id column="customerAccountId" property="customerAccountId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, customer_id, account_no, channel, create_time, create_person, update_time, update_person
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from fc_customer_account
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from fc_customer_account
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qccr.fcustomer.dal.model.CustomerAccount" useGeneratedKeys="true" keyProperty="id" >
+    insert into fc_customer_account (customer_id, account_no, channel, 
+      create_time, create_person, update_time, 
+      update_person)
+    values (#{customerId,jdbcType=BIGINT}, #{accountNo,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createPerson,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updatePerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qccr.fcustomer.dal.model.CustomerAccount" useGeneratedKeys="true" keyProperty="id" >
+    insert into fc_customer_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="accountNo != null" >
+        account_no,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createPerson != null" >
+        create_person,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatePerson != null" >
+        update_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="accountNo != null" >
+        #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null" >
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatePerson != null" >
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qccr.fcustomer.dal.model.CustomerAccount" >
+    update fc_customer_account
+    <set >
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="accountNo != null" >
+        account_no = #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null" >
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatePerson != null" >
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qccr.fcustomer.dal.model.CustomerAccount" >
+    update fc_customer_account
+    set customer_id = #{customerId,jdbcType=BIGINT},
+      account_no = #{accountNo,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_person = #{updatePerson,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="com.qccr.fcustomer.dal.model.CustomerAccountQuery" >
+    select
+    <include refid="Base_Column_List" />
+    from fc_customer_account
+    where TRUE
+    <if test="customerId != null" >
+      AND customer_id = #{customerId,jdbcType=BIGINT}
+    </if>
+    <if test="accountNo != null" >
+      AND account_no = #{accountNo,jdbcType=VARCHAR}
+    </if>
+    <if test="channels != null">
+      AND channel in
+      <foreach item="item" index="index" collection="channels"
+               open="(" separator="," close=")">
+        #{item,jdbcType=VARCHAR}
+      </foreach>
+    </if>
+
+  </select>
+
+  <select id="selectUniqByParams" resultMap="BaseResultMap" parameterType="com.qccr.fcustomer.dal.model.CustomerAccountQuery" >
+    select
+    <include refid="Base_Column_List" />
+    from fc_customer_account
+    where TRUE
+    <if test="customerId != null" >
+      AND customer_id = #{customerId,jdbcType=BIGINT}
+    </if>
+    <if test="accountNo != null" >
+      AND account_no = #{accountNo,jdbcType=VARCHAR}
+    </if>
+    <if test="channels != null">
+      AND channel in
+      <foreach item="item" index="index" collection="channels"
+               open="(" separator="," close=")">
+        #{item,jdbcType=VARCHAR}
+      </foreach>
+    </if>
+  </select>
+
+  <sql id="sqlDetailwhere">
+    <where>
+      TRUE
+      <if test="id != null">
+        AND customer.id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="customerType != null" >
+        AND customer.customer_type = #{customerType,jdbcType=TINYINT}
+      </if>
+      <if test="customerName != null" >
+        AND customer.customer_name LIKE CONCAT(#{customerName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="enterpriseName != null" >
+        AND enterprise.enterprise_name LIKE CONCAT(#{enterpriseName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="customerInfoId != null" >
+        AND customer.customer_info_id = #{customerInfoId,jdbcType=BIGINT}
+      </if>
+      <if test="sourceChannel != null" >
+        AND customer.source_channel = #{sourceChannel,jdbcType=VARCHAR}
+      </if>
+      <if test="accountChannel != null" >
+        AND customreAccount.channel = #{accountChannel,jdbcType=VARCHAR}
+      </if>
+      <if test="accountNo != null" >
+        AND customreAccount.account_no = #{accountNo,jdbcType=VARCHAR}
+      </if>
+      <if test="bizStoreIds != null" >
+        AND enterprise.biz_store_id IN
+        <foreach item="item" index="index" collection="bizStoreIds"
+                 open="(" separator="," close=")">
+          #{item,jdbcType=VARCHAR}
+        </foreach>
+      </if>
+      <if test="bizUserIds != null" >
+        AND enterprise.biz_user_id IN
+        <foreach item="item" index="index" collection="bizUserIds"
+                 open="(" separator="," close=")">
+          #{item,jdbcType=BIGINT}
+        </foreach>
+      </if>
+      <if test="businessLicenceNos != null" >
+        AND enterprise.business_licence_no IN
+        <foreach item="item" index="index" collection="businessLicenceNos"
+                 open="(" separator="," close=")">
+          #{item,jdbcType=VARCHAR}
+        </foreach>
+      </if>
+    </where>
+  </sql>
+
+  <select id="selectEnterpriseCustomerAccountByQuery" resultMap="EnterpriseCustomerAccounteResultMap" parameterType="com.qccr.fcustomer.dal.model.CustomerQuery" timeout="60">
+    SELECT
+    customreAccount.`id` customerAccountId,
+    enterprise.`biz_store_id` bizStoreId,
+    enterprise.`biz_shop_code` bizShopCode,
+    enterprise.`biz_user_id` bizUserId,
+    enterprise.`legal_person_id` legalPersonId,
+    enterprise.`enterprise_name` enterpriseName,
+    enterprise.`business_licence_no` businessLicenceNo,
+    enterprise.`address` address,
+    customer.`customer_name` customerName,
+    customer.`source_channel` sourceChannel,
+    customer.`id` customerId,
+    customreAccount.`account_no` accountNo,
+    customreAccount.`channel` channel
+    FROM fc_customer customer
+    INNER JOIN fc_enterprise enterprise ON customer.customer_info_id = enterprise.id
+    INNER JOIN fc_customer_account customreAccount ON(customreAccount.customer_id=customer.id)
+    <include refid="sqlDetailwhere"/>
+    <if test="start != null">
+      <if test="limit != null">
+        LIMIT #{start}, #{limit}
+      </if>
+    </if>
+  </select>
+
+  <select id="countEnterpriseCustomerAccountByQuery" resultType="Long" parameterType="com.qccr.fcustomer.dal.model.CustomerQuery" timeout="60">
+  SELECT
+  count(*)
+  FROM fc_customer customer
+  INNER JOIN fc_enterprise enterprise ON customer.customer_info_id = enterprise.id
+  INNER JOIN fc_customer_account customreAccount ON(customreAccount.customer_id=customer.id)
+  <include refid="sqlDetailwhere"/>
+</select>
+
+</mapper>

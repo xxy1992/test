@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="fcustomer-deploy:war">
+    <output-path>$PROJECT_DIR$/tools/fcustomer-deploy/target</output-path>
+    <root id="archive" name="fcustomer-deploy.war">
+      <element id="artifact" artifact-name="fcustomer-deploy:war exploded" />
+    </root>
+  </artifact>
+</component>

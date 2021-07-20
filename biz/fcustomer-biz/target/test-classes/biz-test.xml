@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="fcustomer" owner="platform"/>
+    <dubbo:registry
+            address="zookeeper://zk1.cluster.qccrnb.com:2181?backup=zk2.cluster.qccrnb.com:2181,zk3.cluster.qccrnb.com:2181"
+            register="false"/>
+
+    <dubbo:reference protocol="dubbo" id="financeMerchantFacade"
+                     interface="com.qccr.fcustomer.facade.merchant.FinanceMerchantFacade"
+                     version="1.0.0" check="false" timeout="600000" url="dubbo://localhost:8888"/>
+    <dubbo:reference protocol="dubbo" id="customerAccountFacade"
+                     interface="com.qccr.fcustomer.facade.customer.CustomerAccountFacade"
+                     version="1.0.0" check="false" timeout="600000" url="dubbo://localhost:8888"/>
+    <dubbo:reference protocol="dubbo" id="financeCustomerFacade"
+                     interface="com.qccr.fcustomer.facade.customer.FinanceCustomerFacade"
+                     version="1.0.0" check="false" timeout="600000" url="dubbo://localhost:8888"/>
+
+</beans>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qccr.fcustomer.dal.mapper.FinanceMerchantMapper" >
+  <resultMap id="BaseResultMap" type="com.qccr.fcustomer.dal.model.FinanceMerchant" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="mch_no" property="mchNo" jdbcType="VARCHAR" />
+    <result column="customer_id" property="customerId" jdbcType="BIGINT" />
+    <result column="settle_channel" property="settleChannel" jdbcType="VARCHAR" />
+    <result column="settle_account" property="settleAccount" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_person" property="updatePerson" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, mch_no, customer_id, settle_channel, settle_account, create_time, create_person, 
+    update_time, update_person
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from fc_merchant
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from fc_merchant
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qccr.fcustomer.dal.model.FinanceMerchant" useGeneratedKeys="true" keyProperty="id" >
+    insert into fc_merchant (mch_no, customer_id, settle_channel, 
+      settle_account, create_time, create_person, 
+      update_time, update_person)
+    values (#{mchNo,jdbcType=VARCHAR}, #{customerId,jdbcType=BIGINT}, #{settleChannel,jdbcType=VARCHAR}, 
+      #{settleAccount,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createPerson,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updatePerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qccr.fcustomer.dal.model.FinanceMerchant" useGeneratedKeys="true" keyProperty="id" >
+    insert into fc_merchant
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mchNo != null" >
+        mch_no,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="settleChannel != null" >
+        settle_channel,
+      </if>
+      <if test="settleAccount != null" >
+        settle_account,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createPerson != null" >
+        create_person,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updatePerson != null" >
+        update_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mchNo != null" >
+        #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="settleChannel != null" >
+        #{settleChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="settleAccount != null" >
+        #{settleAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null" >
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatePerson != null" >
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qccr.fcustomer.dal.model.FinanceMerchant" >
+    update fc_merchant
+    <set >
+      <if test="mchNo != null" >
+        mch_no = #{mchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="settleChannel != null" >
+        settle_channel = #{settleChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="settleAccount != null" >
+        settle_account = #{settleAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null" >
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatePerson != null" >
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qccr.fcustomer.dal.model.FinanceMerchant" >
+    update fc_merchant
+    set mch_no = #{mchNo,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=BIGINT},
+      settle_channel = #{settleChannel,jdbcType=VARCHAR},
+      settle_account = #{settleAccount,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_person = #{updatePerson,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByUniqParams" resultMap="BaseResultMap" parameterType="com.qccr.fcustomer.dal.model.FinanceMerchantQuery" >
+    select
+    <include refid="Base_Column_List" />
+    from fc_merchant
+    where TRUE
+
+    <if test="mchId != null" >
+      AND id = #{mchId,jdbcType=BIGINT}
+    </if>
+    <if test="mchNo != null" >
+      AND mch_no = #{mchNo,jdbcType=VARCHAR}
+    </if>
+    <if test="faNo != null" >
+      AND settle_account = #{faNo,jdbcType=VARCHAR}
+    </if>
+    <if test="settleChannel != null and customerId != null" >
+     AND customer_id = #{customerId,jdbcType=BIGINT}
+     AND settle_channel = #{settleChannel,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+</mapper>

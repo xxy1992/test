@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.qccr.commons:knife:1.0.11.rc1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/commons/knife/1.0.11.rc1/knife-1.0.11.rc1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/commons/knife/1.0.11.rc1/knife-1.0.11.rc1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/commons/knife/1.0.11.rc1/knife-1.0.11.rc1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

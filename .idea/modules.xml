@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/biz/fcustomer-biz/fcustomer-biz.iml" filepath="$PROJECT_DIR$/biz/fcustomer-biz/fcustomer-biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tools/fcustomer-common/fcustomer-common.iml" filepath="$PROJECT_DIR$/tools/fcustomer-common/fcustomer-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dal/fcustomer-dal/fcustomer-dal.iml" filepath="$PROJECT_DIR$/dal/fcustomer-dal/fcustomer-dal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tools/fcustomer-deploy/fcustomer-deploy.iml" filepath="$PROJECT_DIR$/tools/fcustomer-deploy/fcustomer-deploy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/biz/fcustomer-facade/fcustomer-facade.iml" filepath="$PROJECT_DIR$/biz/fcustomer-facade/fcustomer-facade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/biz/fcustomer-integration/fcustomer-integration.iml" filepath="$PROJECT_DIR$/biz/fcustomer-integration/fcustomer-integration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model/fcustomer-model/fcustomer-model.iml" filepath="$PROJECT_DIR$/model/fcustomer-model/fcustomer-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fcustomer-parent.iml" filepath="$PROJECT_DIR$/fcustomer-parent.iml" />
+    </modules>
+  </component>
+</project>

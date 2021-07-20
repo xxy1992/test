@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.qccr.framework:insight:1.6.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/framework/insight/1.6.2/insight-1.6.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/framework/insight/1.6.2/insight-1.6.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/framework/insight/1.6.2/insight-1.6.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

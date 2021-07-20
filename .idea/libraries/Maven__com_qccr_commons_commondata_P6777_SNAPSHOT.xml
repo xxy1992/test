@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.qccr.commons:commondata:P6777-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/commons/commondata/P6777-SNAPSHOT/commondata-P6777-20180510.022650-32.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/commons/commondata/P6777-SNAPSHOT/commondata-P6777-20180510.022650-32-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qccr/commons/commondata/P6777-SNAPSHOT/commondata-P6777-20180510.022650-32-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

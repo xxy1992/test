@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">
+
+    <dubbo:application name="${app_name}" owner="platform"/>
+    <dubbo:registry protocol="zookeeper" address="${zk.url}" timeout="${zk.timeout}"/>
+    <dubbo:protocol name="dubbo" port="${dubbo.port}"/>
+
+    <!-- 客户FACADE -->
+    <dubbo:service interface="com.qccr.fcustomer.facade.customer.FinanceCustomerFacade"
+                   ref="financeCustomerFacade" version="1.0.0" delay="-1"
+                   protocol="dubbo"/>
+
+    <dubbo:service interface="com.qccr.fcustomer.facade.customer.CustomerAccountFacade"
+                   ref="customerAccountFacade" version="1.0.0" delay="-1"
+                   protocol="dubbo"/>
+
+    <!-- 商户FACADE -->
+    <dubbo:service interface="com.qccr.fcustomer.facade.merchant.FinanceMerchantFacade"
+                   ref="financeMerchantFacade" version="1.0.0" delay="-1"
+                   protocol="dubbo"/>
+</beans>
